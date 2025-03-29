@@ -1,0 +1,4 @@
+environments:
+  prod:
+    values:
+      - ../environments/prod/*.yaml.gotmpl

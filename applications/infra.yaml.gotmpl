@@ -1,0 +1,15 @@
+---
+bases:
+  - "../bases/helmDefaults.yaml"
+  - "../bases/environments.yaml"
+
+---
+
+releases:
+{{- if (.Values | get "install.ingress_nginx" false) }}
+- name: ingress-nginx 
+  namespace: {{ .Values | get "ingress_nginx.namespace" "ingress-nginx" }}
+  chart: ./chart/ingress-nginx
+  values:
+    - values/ingress-nginx.yaml.gotmpl
+{{- end }}
